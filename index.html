@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI伴走者｜少人数チームの業務効率化を、一緒に進める</title>
+  <meta name="description" content="少人数チームの一員として現場に入り、業務整理・仕組みづくり・生成AI活用・定着まで一緒に進めるAI伴走者。支援内容、実際の取り組み、料金をご案内します。">
+  <style>
+    :root {
+      --navy: #0b2035;
+      --navy-2: #17364f;
+      --gold: #a88943;
+      --gold-soft: #d7c18a;
+      --cream: #f7f1e5;
+      --cream-2: #fbf8f1;
+      --paper: #fffdf8;
+      --ink: #172b3d;
+      --body: #4b5967;
+      --muted: #74808b;
+      --line: #ded5c4;
+      --green: #39735f;
+      --shadow: 0 20px 55px rgba(11, 32, 53, .12);
+      --radius: 24px;
+      --wrap: min(1120px, calc(100% - 40px));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: var(--wrap); margin-inline: auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(222, 213, 196, .75);
+      background: rgba(255, 253, 248, .92);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .brand b { color: var(--gold); }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      color: var(--body);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .nav a { text-decoration: none; }
+    .nav a:hover { color: var(--navy); }
+    .nav .nav-cta {
+      padding: 10px 17px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 84% 18%, rgba(168, 137, 67, .18), transparent 30%),
+        linear-gradient(135deg, #fffdf8 0%, #f4ecdd 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -250px;
+      bottom: -300px;
+      border: 1px solid rgba(168, 137, 67, .36);
+      border-radius: 50%;
+      box-shadow: 0 0 0 70px rgba(168, 137, 67, .06), 0 0 0 140px rgba(168, 137, 67, .035);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 660px;
+      display: grid;
+      grid-template-columns: 1.18fr .82fr;
+      align-items: center;
+      gap: 64px;
+      padding-block: 88px 94px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 17px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 24px;
+      max-width: 780px;
+      font-size: clamp(38px, 5.7vw, 72px);
+      line-height: 1.24;
+      letter-spacing: -.045em;
+      font-weight: 800;
+    }
+    .hero-lead {
+      max-width: 720px;
+      margin-bottom: 32px;
+      color: var(--body);
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 2;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 22px;
+      border: 1px solid var(--navy);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(11, 32, 53, .12); }
+    .button-primary { background: var(--navy); color: #fff; }
+    .button-secondary { background: transparent; color: var(--navy); }
+    .button-gold { border-color: var(--gold-soft); background: var(--gold-soft); color: var(--navy); }
+    .hero-note { margin: 18px 0 0; color: var(--muted); font-size: 13px; }
+
+    .hero-panel {
+      position: relative;
+      padding: 28px;
+      border: 1px solid rgba(168, 137, 67, .32);
+      border-radius: 30px;
+      background: rgba(255, 253, 248, .88);
+      box-shadow: var(--shadow);
+    }
+    .profile-chip {
+      display: flex;
+      width: fit-content;
+      margin: -8px -8px 22px auto;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 12px 7px 7px;
+      border: 1px solid rgba(168, 137, 67, .28);
+      border-radius: 999px;
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 10px 24px rgba(11, 32, 53, .09);
+    }
+    .profile-chip img {
+      width: 52px;
+      height: 52px;
+      border: 2px solid var(--gold-soft);
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 18%;
+    }
+    .profile-chip small,
+    .profile-chip strong { display: block; }
+    .profile-chip small { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+    .profile-chip strong { margin-top: 1px; color: var(--navy); font-size: 14px; }
+    .hero-panel-label {
+      margin-bottom: 21px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .15em;
+    }
+    .hero-flow { display: grid; gap: 10px; }
+    .hero-flow-item {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 15px;
+      border-radius: 17px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .hero-flow-item span {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold-soft);
+      font-weight: 800;
+    }
+    .hero-flow-item strong { display: block; margin-bottom: 1px; }
+    .hero-flow-item small { color: var(--body); font-size: 12px; }
+    .hero-panel-foot {
+      margin: 17px 4px 0;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .quick-price {
+      position: relative;
+      z-index: 3;
+      margin-top: -42px;
+    }
+    .quick-price-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+    }
+    .quick-item {
+      padding: 25px 30px;
+      color: #fff;
+      border-right: 1px solid rgba(255,255,255,.14);
+    }
+    .quick-item:last-child { border-right: 0; }
+    .quick-item small { display: block; color: rgba(255,255,255,.65); }
+    .quick-item strong { display: block; margin-top: 5px; color: var(--gold-soft); font-size: 22px; }
+
+    .section { padding-block: 100px; }
+    .section-soft { background: var(--cream-2); }
+    .section-navy { background: var(--navy); color: #fff; }
+    .section-head { max-width: 780px; margin-bottom: 48px; }
+    .section-head.center { margin-inline: auto; text-align: center; }
+    .section-head.center .eyebrow { justify-content: center; }
+    .section-head.center .eyebrow::after { content: ""; width: 28px; height: 1px; background: currentColor; }
+    h2 {
+      margin-bottom: 17px;
+      font-size: clamp(30px, 4.1vw, 48px);
+      line-height: 1.35;
+      letter-spacing: -.035em;
+    }
+    .section-lead { margin: 0; color: var(--body); font-size: 17px; }
+    .section-navy .section-lead { color: rgba(255,255,255,.72); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .pain-card {
+      padding: 28px 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--paper);
+    }
+    .pain-no { color: var(--gold); font-size: 12px; font-weight: 800; }
+    .pain-card h3 { margin: 12px 0 9px; font-size: 18px; }
+    .pain-card p { margin: 0; color: var(--body); font-size: 14px; }
+
+    .stance {
+      margin-top: 38px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      align-items: center;
+      border-radius: 20px;
+      background: var(--cream);
+    }
+    .stance-mark {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #fff;
+      font-weight: 800;
+    }
+    .stance h3 { margin: 0 0 4px; font-size: 21px; }
+    .stance p { margin: 0; color: var(--body); }
+
+    .work-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      counter-reset: flow;
+    }
+    .work-card {
+      position: relative;
+      min-height: 300px;
+      padding: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 22px;
+      background: rgba(255,255,255,.055);
+    }
+    .work-card::after {
+      counter-increment: flow;
+      content: "0" counter(flow);
+      position: absolute;
+      right: 16px;
+      bottom: -34px;
+      color: rgba(255,255,255,.06);
+      font-size: 116px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .work-card .tag { color: var(--gold-soft); font-size: 12px; font-weight: 800; letter-spacing: .13em; }
+    .work-card h3 { margin: 17px 0 13px; font-size: 24px; }
+    .work-card p { margin: 0; color: rgba(255,255,255,.7); }
+    .work-card ul { margin: 18px 0 0; padding: 0; list-style: none; color: rgba(255,255,255,.82); font-size: 14px; }
+    .work-card li { position: relative; padding-left: 17px; margin-top: 8px; }
+    .work-card li::before { content: ""; position: absolute; left: 0; top: .75em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .case-card {
+      padding: 30px;
+      border-radius: 22px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(11, 32, 53, .06);
+    }
+    .case-type { color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+    .case-card h3 { margin: 10px 0 12px; font-size: 21px; line-height: 1.5; }
+    .case-card p { margin: 0; color: var(--body); font-size: 14px; }
+    .case-result {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .case-note { margin: 21px 0 0; color: var(--muted); font-size: 12px; text-align: right; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .plan {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--paper);
+    }
+    .plan.featured {
+      position: relative;
+      border: 2px solid var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .plan.featured::before {
+      content: "中心となる支援";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 13px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .plan-step { color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+    .plan h3 { margin: 10px 0 7px; font-size: 22px; }
+    .price { margin: 8px 0 16px; font-weight: 800; }
+    .price strong { color: var(--navy); font-size: 42px; line-height: 1; letter-spacing: -.04em; }
+    .price small { color: var(--body); }
+    .plan-desc { min-height: 76px; margin-bottom: 17px; color: var(--body); font-size: 14px; }
+    .plan ul { margin: 0 0 24px; padding: 18px 0 0; border-top: 1px solid var(--line); list-style: none; }
+    .plan li { position: relative; padding-left: 22px; margin-bottom: 8px; color: var(--body); font-size: 14px; }
+    .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 900; }
+    .plan .button { margin-top: auto; }
+    .price-note { margin: 23px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
+
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .fit-box { padding: 34px; border-radius: 22px; }
+    .fit-box.good { background: var(--cream); }
+    .fit-box.other { border: 1px solid var(--line); background: var(--paper); }
+    .fit-box h3 { margin-bottom: 17px; font-size: 22px; }
+    .fit-box ul { margin: 0; padding: 0; list-style: none; }
+    .fit-box li { position: relative; padding-left: 25px; margin-top: 10px; color: var(--body); }
+    .fit-box.good li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 900; }
+    .fit-box.other li::before { content: "—"; position: absolute; left: 0; color: var(--muted); }
+
+    .faq-list { max-width: 860px; margin-inline: auto; }
+    details { border-bottom: 1px solid var(--line); }
+    summary {
+      position: relative;
+      padding: 23px 46px 23px 0;
+      list-style: none;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 4px; top: 20px; color: var(--gold); font-size: 24px; }
+    details[open] summary::after { content: "−"; }
+    .answer { padding: 0 40px 23px 0; color: var(--body); }
+
+    .cta {
+      position: relative;
+      overflow: hidden;
+      padding-block: 92px;
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+    }
+    .cta::before, .cta::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(215, 193, 138, .24);
+      border-radius: 50%;
+    }
+    .cta::before { left: -190px; top: -180px; }
+    .cta::after { right: -190px; bottom: -180px; }
+    .cta-inner { position: relative; z-index: 1; max-width: 760px; margin-inline: auto; }
+    .cta h2 { margin-bottom: 16px; }
+    .cta p { margin-bottom: 30px; color: rgba(255,255,255,.72); }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .cta .button-secondary { color: #fff; border-color: rgba(255,255,255,.45); }
+
+    footer { padding-block: 30px; background: #071827; color: rgba(255,255,255,.6); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+    footer a { color: var(--gold-soft); text-decoration: none; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      .nav a:not(.nav-cta) { display: none; }
+      .hero-inner { grid-template-columns: 1fr; min-height: auto; gap: 42px; }
+      .hero-panel { max-width: 680px; }
+      .quick-price-inner { grid-template-columns: repeat(2, 1fr); }
+      .quick-item:nth-child(2) { border-right: 0; }
+      .quick-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.14); }
+      .pain-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-flow, .case-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .work-card { min-height: auto; }
+      .plan-desc { min-height: 0; }
+    }
+
+    @media (max-width: 720px) {
+      :root { --wrap: min(100% - 28px, 1120px); }
+      .topbar-inner { min-height: 64px; }
+      .nav { gap: 10px; }
+      .nav-cta { padding: 8px 12px !important; font-size: 12px; }
+      .hero-inner { padding-block: 68px 84px; }
+      h1 { font-size: clamp(35px, 10vw, 52px); }
+      .hero-panel { padding: 20px; }
+      .profile-chip { margin: -4px -4px 20px auto; }
+      .quick-price { margin-top: -30px; }
+      .quick-price-inner { grid-template-columns: 1fr; }
+      .quick-item { padding: 18px 22px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+      .quick-item:last-child { border-bottom: 0; }
+      .section { padding-block: 76px; }
+      .pain-grid, .fit-grid { grid-template-columns: 1fr; }
+      .stance { grid-template-columns: 1fr; }
+      .stance-mark { width: 52px; height: 52px; }
+      .section-head { margin-bottom: 34px; }
+      .case-card, .plan, .fit-box { padding: 25px 22px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="AI伴走者 トップへ">
+        <span class="brand-mark">伴</span>
+        <span><b>AI</b>伴走者</span>
+      </a>
+      <nav class="nav" aria-label="ページ内メニュー">
+        <a href="#support">支援内容</a>
+        <a href="#cases">取り組み</a>
+        <a href="#price">料金</a>
+        <a class="nav-cta" href="https://calendar.app.google/MzZ4zQDEzPZrTEUd8" target="_blank" rel="noopener">無料相談</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="reveal">
+          <p class="eyebrow">Team Operations Partner</p>
+          <h1>少人数チームの一員として、<br>現場の仕事を一緒に整える。</h1>
+          <p class="hero-lead">外から助言するだけではありません。実際の仕事に入り、メンバーと一緒に手を動かしながら、ムダな作業・情報の分散・属人化をひとつずつ改善します。生成AIは、仕事を楽にするための道具として使います。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://calendar.app.google/MzZ4zQDEzPZrTEUd8" target="_blank" rel="noopener">無料相談を予約する <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#price">料金を見る</a>
+          </div>
+          <p class="hero-note">オンラインで全国対応／東京都内は対面もご相談いただけます</p>
+        </div>
+
+        <aside class="hero-panel reveal" aria-label="支援の進め方">
+          <div class="profile-chip" aria-label="担当者">
+            <img src="profile.png" alt="AI伴走者 矢嶋昌人">
+            <div><small>AI伴走者</small><strong>矢嶋 昌人</strong></div>
+          </div>
+          <p class="hero-panel-label">一緒に進める3ステップ</p>
+          <div class="hero-flow">
+            <div class="hero-flow-item">
+              <span>01</span>
+              <div><strong>現場を知る</strong><small>仕事の流れと困りごとを整理</small></div>
+            </div>
+            <div class="hero-flow-item">
+              <span>02</span>
+              <div><strong>一緒に改善する</strong><small>実務の中で方法と道具をつくる</small></div>
+            </div>
+            <div class="hero-flow-item">
+              <span>03</span>
+              <div><strong>チームに残す</strong><small>誰でも続けられる仕組みにする</small></div>
+            </div>
+          </div>
+          <p class="hero-panel-foot">「教えて終わり」ではなく、使える状態まで伴走します。</p>
+        </aside>
+      </div>
+    </section>
+
+    <div class="quick-price wrap" aria-label="料金の概要">
+      <div class="quick-price-inner">
+        <div class="quick-item"><small>無料相談・業務整理</small><strong>0円／60分</strong></div>
+        <div class="quick-item"><small>生成AI 学び放題</small><strong>月7,700円</strong></div>
+        <div class="quick-item"><small>単発の業務改善</small><strong>5,000円〜</strong></div>
+        <div class="quick-item"><small>チーム伴走</small><strong>月40,000円〜</strong></div>
+      </div>
+    </div>
+
+    <section class="section" id="support">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">For Small Teams</p>
+          <h2>こんな状態を、チームの中から整えます。</h2>
+          <p class="section-lead">ツールを入れることが目的ではありません。毎日の仕事が少しずつ軽くなり、チームで回せる状態を目指します。</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card reveal"><span class="pain-no">01</span><h3>事務作業に追われる</h3><p>転記・集計・資料作成など、毎日または毎月くり返す作業が多い。</p></article>
+          <article class="pain-card reveal"><span class="pain-no">02</span><h3>情報がバラバラ</h3><p>紙・Excel・チャットに情報が分かれ、探すことや確認に時間がかかる。</p></article>
+          <article class="pain-card reveal"><span class="pain-no">03</span><h3>仕事が属人化している</h3><p>特定の人しか分からない仕事があり、休むと業務が止まってしまう。</p></article>
+          <article class="pain-card reveal"><span class="pain-no">04</span><h3>改善する時間がない</h3><p>変えたい気持ちはあるものの、日々の仕事で手いっぱいになっている。</p></article>
+        </div>
+        <div class="stance reveal">
+          <div class="stance-mark">伴走</div>
+          <div><h3>AIを導入する人ではなく、仕事を一緒に整える人。</h3><p>業務を理解してから、必要なところだけに生成AI・表計算・自動化などを使います。新しい道具を増やすより、今ある仕事を分かりやすくすることを優先します。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-navy">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <p class="eyebrow">How We Work</p>
+          <h2>支援は、現場の仕事から始まります。</h2>
+          <p class="section-lead">会議で提案して終わるのではなく、実際の業務を見ながら改善を積み重ねます。</p>
+        </div>
+        <div class="work-flow">
+          <article class="work-card reveal"><span class="tag">UNDERSTAND</span><h3>業務を棚卸しする</h3><p>誰が、いつ、何をしているかを一緒に確認し、負担・重複・止まりやすい部分を見つけます。</p><ul><li>作業の流れを見える化</li><li>困りごとの優先順位を整理</li><li>変えない部分も明確に</li></ul></article>
+          <article class="work-card reveal"><span class="tag">IMPROVE</span><h3>小さくつくって試す</h3><p>管理表、テンプレート、自動化などを実際につくり、現場で使いながら調整します。</p><ul><li>一番負担の大きい作業から</li><li>今のやり方を生かして改善</li><li>必要に応じて生成AIを活用</li></ul></article>
+          <article class="work-card reveal"><span class="tag">ADOPT</span><h3>チームに定着させる</h3><p>つくった仕組みを渡して終わらず、メンバーが無理なく使い続けられる形まで整えます。</p><ul><li>手順と判断基準を残す</li><li>使いにくい部分を修正</li><li>次の改善へつなげる</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="cases">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Working Examples</p>
+          <h2>実際に稼働した取り組み</h2>
+          <p class="section-lead">ご相談だけで終わらず、実際のデータで動作を確認し、現場で使える状態まで整えています。</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card reveal"><span class="case-type">講座運営・営業支援</span><h3>受講者管理と資料作成をひとつの流れに</h3><p>受講者ごとのシートと管理表を連携。回答内容をもとに営業資料を作成する仕組みまで実装しました。</p><div class="case-result">入力・管理・資料作成を分断しない仕組みへ</div></article>
+          <article class="case-card reveal"><span class="case-type">予約・収支管理</span><h3>予約状況と月次収支を見える化</h3><p>複数の予約をまとめて確認できるカレンダーと、宿泊・カフェの月次収支表を作成しました。</p><div class="case-result">日々の確認と月末集計をひとつの管理へ</div></article>
+          <article class="case-card reveal"><span class="case-type">AI記帳ツール</span><h3>レシート・通帳から台帳出力までを一連に</h3><p>画像の読み取り、内容確認、台帳出力を一つの流れにし、配布用アプリと手順書まで整えました。</p><div class="case-result">読み取りだけでなく、確認・運用まで設計</div></article>
+        </div>
+        <p class="case-note">※顧客名は非公開。掲載内容は実装・納品・実データでの稼働確認済みの事例です。</p>
+      </div>
+    </section>
+
+    <section class="section" id="price">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <p class="eyebrow">Price</p>
+          <h2>小さく試してから、必要な分だけ。</h2>
+          <p class="section-lead">無料相談・学び放題・単発の改善から、今の目的に合う始め方を選べます。</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="plan reveal">
+            <span class="plan-step">STEP 01</span><h3>無料相談・業務整理</h3>
+            <div class="price"><strong>0</strong><small>円／60分</small></div>
+            <p class="plan-desc">今の仕事の流れと困りごとを伺い、どこから手をつけるとよいかを一緒に整理します。</p>
+            <ul><li>業務の棚卸し</li><li>改善候補の整理</li><li>オンラインで全国対応</li></ul>
+            <a class="button button-secondary" href="https://calendar.app.google/MzZ4zQDEzPZrTEUd8" target="_blank" rel="noopener">無料で相談する</a>
+          </article>
+          <article class="plan reveal">
+            <span class="plan-step">STEP 02</span><h3>生成AI 学び放題</h3>
+            <div class="price"><strong>7,700</strong><small>円／月</small></div>
+            <p class="plan-desc">生成AIを自分の仕事に取り入れたい方が、自分のペースで学び、試しながら相談できる継続プランです。</p>
+            <ul><li>生成AIの使い方を継続して学べる</li><li>仕事への取り入れ方を相談できる</li><li>初心者の方も自分のペースで進められる</li></ul>
+            <a class="button button-secondary" href="https://calendar.app.google/MzZ4zQDEzPZrTEUd8" target="_blank" rel="noopener">学び放題について相談する</a>
+          </article>
+          <article class="plan reveal">
+            <span class="plan-step">STEP 03</span><h3>単発の業務改善</h3>
+            <div class="price"><strong>5,000</strong><small>円〜</small></div>
+            <p class="plan-desc">管理表、資料、テンプレートなど、困っている仕事を一つ選んで改善します。</p>
+            <ul><li>1つの困りごとから依頼可能</li><li>内容に応じて事前にお見積り</li><li>成果確認後のお支払い</li></ul>
+            <a class="button button-secondary" href="https://forms.gle/bzFWMhvuxpW9AD677" target="_blank" rel="noopener">内容を相談する</a>
+          </article>
+          <article class="plan featured reveal">
+            <span class="plan-step">STEP 04</span><h3>チーム業務効率化の伴走</h3>
+            <div class="price"><strong>40,000</strong><small>円〜／月</small></div>
+            <p class="plan-desc">少人数チームの中に入り、優先順位を決めながら、業務整理・改善・定着を継続して進めます。</p>
+            <ul><li>まず1ヶ月から開始可能</li><li>定例の相談と実務改善</li><li>生成AIに関する質問・相談</li></ul>
+            <a class="button button-primary" href="https://calendar.app.google/MzZ4zQDEzPZrTEUd8" target="_blank" rel="noopener">伴走について相談する</a>
+          </article>
+        </div>
+        <p class="price-note">表示価格は税込です。業務量・難易度・対応範囲により、事前に個別のお見積りをご案内します。</p>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="wrap">
+        <div class="section-head reveal"><p class="eyebrow">Good Fit</p><h2>このような方に向いています。</h2></div>
+        <div class="fit-grid">
+          <div class="fit-box good reveal"><h3>相性がよいチーム</h3><ul><li>少人数で、経営者と現場の距離が近い</li><li>事務や管理の負担を減らしたい</li><li>一緒に試しながら改善を進めたい</li><li>仕組みをチーム内に残したい</li></ul></div>
+          <div class="fit-box other reveal"><h3>別の支援が向いているケース</h3><ul><li>大企業全体への一括導入</li><li>即日での大規模システム開発</li><li>大人数向けの一斉研修だけを受けたい</li><li>すべてを完全に丸投げしたい</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head center reveal"><p class="eyebrow">FAQ</p><h2>よくある質問</h2></div>
+        <div class="faq-list reveal">
+          <details open><summary>AIやパソコンに詳しくなくても大丈夫ですか？</summary><div class="answer">大丈夫です。専門用語を覚えることより、今の仕事が楽になることを優先します。必要な操作は、実際の業務に合わせて分かりやすくお伝えします。</div></details>
+          <details><summary>どのような業務から相談できますか？</summary><div class="answer">転記・集計・予約管理・顧客管理・資料作成・報告書作成など、繰り返し発生する仕事や、特定の人に集中している仕事からご相談いただけます。</div></details>
+          <details><summary>月額契約をしないと相談できませんか？</summary><div class="answer">いいえ。無料相談や単発の業務改善だけでも問題ありません。実際に一つ試してから、継続支援が必要かをご判断いただけます。</div></details>
+          <details><summary>どのくらいの期間で改善できますか？</summary><div class="answer">業務の内容によって異なります。小さな管理表やテンプレートは単発で対応できる場合があります。複数人が関わる業務や定着が必要な場合は、1ヶ月以上の伴走をご提案します。</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap cta-inner reveal">
+        <p class="eyebrow" style="justify-content:center">Free Consultation</p>
+        <h2>まずは、いちばん面倒な仕事を一つ教えてください。</h2>
+        <p>解決策を売り込む前に、今の仕事を一緒に整理します。相談だけでも構いません。</p>
+        <div class="cta-actions">
+          <a class="button button-gold" href="https://calendar.app.google/MzZ4zQDEzPZrTEUd8" target="_blank" rel="noopener">予約カレンダーを開く</a>
+          <a class="button button-secondary" href="https://forms.gle/bzFWMhvuxpW9AD677" target="_blank" rel="noopener">フォームで相談する</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© AI伴走者　矢嶋 昌人</div>
+      <a href="https://aibanso.com" target="_blank" rel="noopener">aibanso.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>
