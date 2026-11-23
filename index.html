@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>個人事業主・一人社長のための業務整理診断｜AI伴走者</title>
-  <meta name="description" content="忙しい個人事業主・一人社長の仕事を60分で整理。業務の棚卸し、負担の大きい作業、改善の優先順位、次の一歩を一緒に明確にする2,000円の業務整理診断です。">
+  <meta name="description" content="個人事業主・一人社長の仕事を整理し、必要に応じて単発改善、3か月のAI活用個別伴走、継続的なチーム伴走まで選べるAI伴走者の支援サービスです。入口は60分2,000円の業務整理診断です。">
   <style>
     :root {
       --navy: #0b2035;
@@ -410,11 +410,26 @@
       font-weight: 800;
       white-space: nowrap;
     }
-    .plan-step { color: var(--gold); font-size: 13px; font-weight: 800; letter-spacing: .14em; }
+    .plan-purpose {
+      align-self: flex-start;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--cream);
+      color: var(--navy-2);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+    .plan.learning {
+      background: linear-gradient(145deg, #fffdf8 0%, #f7f1e5 100%);
+      border-color: var(--gold-soft);
+    }
+    .plan.learning .plan-purpose { background: var(--navy); color: #fff; }
     .plan h3 { margin: 9px 0 6px; font-size: 24px; }
     .price { margin: 8px 0 16px; font-weight: 800; }
     .price strong { color: var(--navy); font-size: 46px; line-height: 1; letter-spacing: -.04em; }
     .price small { color: var(--body); font-size: 16px; }
+    .plan-subprice { margin: -8px 0 14px; color: var(--gold); font-size: 14px; font-weight: 800; }
     .plan-desc { min-height: 62px; margin-bottom: 15px; color: var(--body); font-size: 17px; line-height: 1.7; }
     .plan ul { margin: 0 0 24px; padding: 18px 0 0; border-top: 1px solid var(--line); list-style: none; }
     .plan li { position: relative; padding-left: 22px; margin-bottom: 7px; color: var(--body); font-size: 16px; }
@@ -508,6 +523,7 @@
       .stance-mark { width: 52px; height: 52px; }
       .section-head { margin-bottom: 28px; }
       .case-card, .plan, .fit-box { padding: 24px 21px; }
+      .cta h2 { font-size: clamp(30px, 8.5vw, 38px); }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
 
@@ -540,7 +556,7 @@
         <div class="reveal">
           <p class="eyebrow">Business Organization Check</p>
           <h1>忙しい毎日を、<br>まず60分で<span class="keep-together">整理する。</span></h1>
-          <p class="hero-lead">個人事業主・一人社長のための「業務整理診断」です。頭の中にある仕事を一緒に棚卸しし、時間を取られている作業と、最初に見直すべきことを明確にします。</p>
+          <p class="hero-lead">個人事業主・一人社長のための「業務整理診断」です。まず頭の中にある仕事を一緒に棚卸し。その後は必要に応じて、単発改善・AIの個別学習・継続伴走から選べます。</p>
           <div class="hero-actions">
             <a class="button button-primary" href="https://square.link/u/3jpM3o1t" target="_blank" rel="noopener">2,000円の診断に申し込む</a>
             <a class="button button-secondary" href="#support">診断内容を見る</a>
@@ -628,33 +644,41 @@
       <div class="wrap">
         <div class="section-head center reveal">
           <p class="eyebrow">Price</p>
-          <h2>整理してから、<span class="keep-together">必要な支援だけ。</span></h2>
-          <p class="section-lead">まずは2,000円の業務整理診断から。診断後の改善は、ご自身で進めても、必要な部分だけ依頼しても構いません。</p>
+          <h2>目的で選べる、<span class="keep-together">4つの支援。</span></h2>
+          <p class="section-lead">順番に契約する必要はありません。まず仕事を整理したい方、自分でAIを使えるようになりたい方、実作業を一緒に改善したい方。それぞれの目的に合わせて選べます。</p>
         </div>
         <div class="pricing-grid">
           <article class="plan featured reveal">
-            <span class="plan-step">STEP 01</span><h3>業務整理診断</h3>
+            <span class="plan-purpose">仕事を整理する</span><h3>業務整理診断</h3>
             <div class="price"><strong>2,000</strong><small>円／60分</small></div>
             <p class="plan-desc">今の仕事を棚卸しし、時間を取られている業務と、最初に見直すべきことを一緒に整理します。</p>
             <ul><li>業務の全体像を見える化</li><li>改善の優先順位を整理</li><li>明日からの一歩を明確に</li></ul>
             <a class="button button-primary" href="https://square.link/u/3jpM3o1t" target="_blank" rel="noopener">業務整理診断に申し込む</a>
           </article>
           <article class="plan reveal">
-            <span class="plan-step">STEP 02</span><h3>単発の業務改善</h3>
+            <span class="plan-purpose">ひとつだけ改善する</span><h3>単発の業務改善</h3>
             <div class="price"><strong>5,000</strong><small>円〜</small></div>
             <p class="plan-desc">管理表、資料、テンプレートなど、困っている仕事を一つ選んで改善します。</p>
             <ul><li>1つの困りごとから依頼可能</li><li>内容に応じて事前にお見積り</li><li>成果確認後のお支払い</li></ul>
-            <a class="button button-secondary" href="https://square.link/u/3jpM3o1t" target="_blank" rel="noopener">業務整理診断から始める</a>
+            <a class="button button-secondary" href="https://square.link/u/3jpM3o1t" target="_blank" rel="noopener">業務整理診断で相談する</a>
+          </article>
+          <article class="plan learning reveal">
+            <span class="plan-purpose">AIを自分で使えるようになる</span><h3>AI活用個別伴走</h3>
+            <div class="price"><strong>7,800</strong><small>円／月</small></div>
+            <p class="plan-subprice">3か月・総額23,400円（税込）</p>
+            <p class="plan-desc">自分の仕事を題材に、生成AIを一人でも繰り返し使える状態を目指す3か月の個別学習サポートです。</p>
+            <ul><li>月2回のオンライン個別面談・全6回</li><li>期間中のチャット質問し放題</li><li>自分用テンプレートと手順づくり</li></ul>
+            <a class="button button-secondary" href="https://square.link/u/3jpM3o1t" target="_blank" rel="noopener">業務整理診断で相談する</a>
           </article>
           <article class="plan reveal">
-            <span class="plan-step">STEP 03</span><h3>チーム伴走</h3>
+            <span class="plan-purpose">継続して仕組み化する</span><h3>チーム伴走</h3>
             <div class="price"><strong>30,000</strong><small>円／月</small></div>
             <p class="plan-desc">個人事業主・一人社長の事業に入り、優先順位を決めながら、業務整理・改善・定着を継続して進めます。</p>
             <ul><li>定例ミーティングと進捗確認</li><li>業務に合わせた実務改善</li><li>生成AIの活用支援</li></ul>
-            <a class="button button-secondary" href="https://square.link/u/3jpM3o1t" target="_blank" rel="noopener">業務整理診断から始める</a>
+            <a class="button button-secondary" href="https://square.link/u/3jpM3o1t" target="_blank" rel="noopener">業務整理診断で相談する</a>
           </article>
         </div>
-        <p class="price-note">表示価格は税込です。業務量・難易度・対応範囲により、事前に個別のお見積りをご案内します。</p>
+        <p class="price-note">表示価格は税込です。AI活用個別伴走は3か月のモニタープランです。単発改善・チーム伴走は、業務量・難易度・対応範囲を確認して事前にお見積りします。</p>
       </div>
     </section>
 
@@ -662,7 +686,7 @@
       <div class="wrap">
         <div class="section-head reveal"><p class="eyebrow">Good Fit</p><h2>このような方に<span class="keep-together">向いています。</span></h2></div>
         <div class="fit-grid">
-          <div class="fit-box good reveal"><h3>相性がよい方</h3><ul><li>個人事業主、フリーランス、一人社長</li><li>事務や管理の負担を減らしたい</li><li>何から改善すべきか整理したい</li><li>一緒に試しながら仕組みをつくりたい</li></ul></div>
+          <div class="fit-box good reveal"><h3>相性がよい方</h3><ul><li>個人事業主、フリーランス、一人社長</li><li>事務や管理の負担を減らしたい</li><li>自分の仕事で生成AIを使えるようになりたい</li><li>一緒に試しながら仕組みをつくりたい</li></ul></div>
           <div class="fit-box other reveal"><h3>別の支援が向いているケース</h3><ul><li>大企業全体への一括導入</li><li>即日での大規模システム開発</li><li>大人数向けの一斉研修だけを受けたい</li><li>業務の共有なしですべて丸投げしたい</li></ul></div>
         </div>
       </div>
@@ -674,7 +698,8 @@
         <div class="faq-list reveal">
           <details open><summary>AIやパソコンに詳しくなくても大丈夫ですか？</summary><div class="answer">大丈夫です。専門用語を覚えることより、今の仕事が楽になることを優先します。必要な操作は、実際の業務に合わせて分かりやすくお伝えします。</div></details>
           <details><summary>どのような業務を整理できますか？</summary><div class="answer">転記・集計・予約管理・顧客管理・資料作成・報告書作成など、繰り返し発生する仕事や、特定の人に集中している仕事を整理できます。</div></details>
-          <details><summary>診断を受けると、月額契約が必要ですか？</summary><div class="answer">必要ありません。診断結果をもとにご自身で改善していただいて構いません。実作業の支援が必要な場合だけ、単発改善やチーム伴走をお選びいただけます。</div></details>
+          <details><summary>診断を受けると、月額契約が必要ですか？</summary><div class="answer">必要ありません。診断結果をもとにご自身で改善していただいて構いません。必要な場合だけ、単発改善、3か月のAI活用個別伴走、チーム伴走からお選びいただけます。</div></details>
+          <details><summary>月7,800円のAI活用個別伴走では何をしますか？</summary><div class="answer">月2回のオンライン個別面談と、期間中のチャット質問を通じて、ご自身の仕事で生成AIを繰り返し使える状態を目指します。3か月・全6回のモニタープランで、自分用のテンプレートや作業手順も一緒に整えます。</div></details>
           <details><summary>業務整理診断の支払い方法は？</summary><div class="answer">ページ内の申込みボタンからSquareの決済ページへ進み、Apple Pay・Google Pay・クレジットカードでお支払いいただけます。決済後に日程調整のご案内をお送りします。</div></details>
           <details><summary>どのくらいの期間で改善できますか？</summary><div class="answer">業務の内容によって異なります。小さな管理表やテンプレートは単発で対応できる場合があります。複数人が関わる業務や定着が必要な場合は、1ヶ月以上の伴走をご提案します。</div></details>
         </div>
